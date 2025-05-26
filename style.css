@@ -1,0 +1,223 @@
+ /* Basic Reset and Global Styles */
+ body {
+     margin: 0;
+     font-family: 'Inter', sans-serif; /* Using the Inter font */
+     line-height: 1.6;
+     background-color: #f4f4f4; /* Light grey background */
+     color: #333; /* Dark grey text */
+ }
+
+ .container {
+     max-width: 1200px; /* Max width for content */
+     margin: 0 auto; /* Center the container */
+     padding: 0 20px; /* Padding on sides */
+ }
+
+ /* Header Styling */
+ .header {
+     background-color: #2c3e50; /* Dark blue background */
+     color: #fff; /* White text */
+     padding: 1rem 0;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+ }
+
+ .header .container {
+     display: flex; /* Use flexbox for alignment */
+     justify-content: space-between; /* Space out logo and nav */
+     align-items: center; /* Vertically align items */
+     flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+ }
+
+ .logo {
+     font-size: 1.8rem;
+     font-weight: 700;
+     color: #ecf0f1; /* Light grey for logo */
+ }
+
+ /* Navigation Menu Styling */
+ .nav ul {
+     list-style: none; /* Remove bullet points */
+     margin: 0;
+     padding: 0;
+     display: flex; /* Arrange nav items horizontally by default on larger screens */
+ }
+
+ .nav ul li {
+     margin-left: 20px; /* Space between nav items */
+ }
+
+ .nav ul li a {
+     color: #ecf0f1; /* Light grey for nav links */
+     text-decoration: none; /* Remove underline */
+     font-weight: 400;
+     transition: color 0.3s ease; /* Smooth transition for hover */
+ }
+
+ .nav ul li a:hover {
+     color: #3498db; /* Blue on hover */
+ }
+
+ /* Hidden checkbox for toggle functionality */
+ .nav-toggle {
+     display: none; /* Hide the actual checkbox input */
+ }
+
+ /* Label for the toggle icon (hamburger/close) */
+ .nav-toggle-label {
+     display: none; /* Hidden by default on larger screens */
+     cursor: pointer;
+     order: 1; /* Ensure it appears after the logo in the flex container on small screens */
+     z-index: 100; /* Ensure it's above other content */
+     width: 30px; /* Adjust as needed */
+     height: 30px; /* Adjust as needed */
+     position: relative; /* For absolute positioning of images */
+ }
+
+ .nav-toggle-label img {
+     max-width: 100%;
+     height: auto;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+ }
+
+ /* Initial state of icons within the label */
+ .close-icon {
+     display: none; /* Close icon hidden by default */
+ }
+
+ /* Hero Section Styling */
+ .hero {
+     background-color: #3498db; /* Blue background */
+     color: #fff; /* White text */
+     text-align: center;
+     padding: 100px 20px; /* Generous padding */
+     border-radius: 8px; /* Rounded corners */
+     margin: 40px 20px; /* Margin around the hero section */
+ }
+
+ .hero h1 {
+     font-size: 3rem;
+     margin-bottom: 20px;
+ }
+
+ .hero p {
+     font-size: 1.2rem;
+     max-width: 800px;
+     margin: 0 auto 30px auto; /* Center paragraph and add bottom margin */
+ }
+
+ .btn {
+     display: inline-block; /* Make it behave like a block but sit inline */
+     background-color: #27ae60; /* Green button */
+     color: #fff;
+     padding: 15px 30px;
+     text-decoration: none;
+     border-radius: 5px; /* Slightly rounded button */
+     font-weight: 700;
+     transition: background-color 0.3s ease; /* Smooth transition for hover */
+ }
+
+ .btn:hover {
+     background-color: #2ecc71; /* Lighter green on hover */
+ }
+
+ /* Footer Styling */
+ .footer {
+     background-color: #2c3e50; /* Dark blue background, same as header */
+     color: #ecf0f1; /* Light grey text */
+     text-align: center;
+     padding: 20px 0;
+     margin-top: 50px; /* Space above the footer */
+ }
+
+ .footer .container {
+     display: flex;
+     flex-direction: column; /* Stack items vertically */
+     align-items: center;
+ }
+
+ .social-links a {
+     color: #ecf0f1;
+     text-decoration: none;
+     margin: 0 10px;
+     transition: color 0.3s ease;
+ }
+
+ .social-links a:hover {
+     color: #3498db; /* Blue on hover */
+ }
+
+ /* Responsive Design with Media Queries */
+
+ /* For screens smaller than 768px (e.g., tablets and mobile) */
+ @media (max-width: 768px) {
+     .header .container {
+         flex-direction: row; /* Keep logo and toggle on one row */
+         justify-content: space-between; /* Space them out */
+     }
+
+     .nav-toggle-label {
+         display: block; /* Show the toggle label */
+     }
+
+     .nav {
+         order: 2; /* Place nav below logo and toggle in the flex container */
+         flex-basis: 100%; /* Make the nav take full width */
+         max-height: 0; /* Initially hide the nav by setting max-height to 0 */
+         overflow: hidden; /* Hide any content that overflows max-height */
+         transition: max-height 0.3s ease-out; /* Smooth transition for opening/closing */
+     }
+
+     .nav ul {
+         flex-direction: column; /* Stack nav items vertically */
+         text-align: center;
+         padding: 20px 0; /* Add some padding when the menu is open */
+         background-color: #34495e; /* Slightly different background for the opened menu */
+         border-radius: 0 0 8px 8px; /* Rounded bottom corners for the menu */
+     }
+
+     .nav ul li {
+         margin: 10px 0; /* More vertical space between nav items */
+     }
+
+     /* When the hidden checkbox is checked, show the navigation menu */
+     .nav-toggle:checked ~ .nav {
+         max-height: 300px; /* Expand max-height to reveal the menu. Adjust if more items are added. */
+     }
+
+     /* When the hidden checkbox is checked, swap icons */
+     .nav-toggle:checked + .nav-toggle-label .hamburger-icon {
+         display: none; /* Hide hamburger icon */
+     }
+
+     .nav-toggle:checked + .nav-toggle-label .close-icon {
+         display: inline-block; /* Show close icon */
+     }
+
+     .hero h1 {
+         font-size: 2.2rem; /* Smaller heading on small screens */
+     }
+
+     .hero p {
+         font-size: 1rem; /* Smaller paragraph text */
+     }
+ }
+
+ /* For screens smaller than 480px (e.g., mobile phones) */
+ @media (max-width: 480px) {
+     .container {
+         padding: 0 15px; /* Less padding on very small screens */
+     }
+
+     .hero {
+         padding: 60px 15px; /* Adjust hero padding */
+         margin: 20px 15px; /* Adjust hero margin */
+     }
+
+     .btn {
+         padding: 12px 25px; /* Slightly smaller button */
+     }
+ }
+ 
